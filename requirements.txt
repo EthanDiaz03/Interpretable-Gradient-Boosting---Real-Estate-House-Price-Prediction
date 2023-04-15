@@ -6,3 +6,4 @@ Pillow
 optuna
 scikit-learn
 sklearn
+lightgbm
