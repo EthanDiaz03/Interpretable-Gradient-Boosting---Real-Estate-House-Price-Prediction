@@ -1,12 +1,12 @@
-#!pip install optuna
-#!pip install lightgbm
+!pip install optuna
+!pip install lightgbm
 import optuna
 from sklearn.model_selection import cross_val_score
 import lightgbm as lgb
 import xgboost as xgb
 import numpy as np
 import seaborn as sns
-#!pip install --upgrade shap
+!pip install --upgrade shap
 import matplotlib.pyplot as plt
 import shap
 import pandas as pd
