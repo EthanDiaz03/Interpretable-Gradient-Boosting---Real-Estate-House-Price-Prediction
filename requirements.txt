@@ -4,4 +4,3 @@ numpy
 easyocr
 Pillow
 optuna
-sklearn
