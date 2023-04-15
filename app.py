@@ -1,4 +1,3 @@
-pip install lightgbm
 import optuna
 from sklearn.model_selection import cross_val_score
 import lightgbm as lgb
