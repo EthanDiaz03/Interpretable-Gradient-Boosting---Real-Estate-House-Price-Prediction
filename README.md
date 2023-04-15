@@ -1,3 +1,15 @@
+---
+title: Milestone 3
+emoji: 🔥
+colorFrom: indigo
+colorTo: blue
+sdk: streamlit
+sdk_version: 1.17.0
+app_file: app.py
+pinned: false
+license: openrail
+---
+
 # Interpretable-Gradient-Boosting---Real-Estate-House-Price-Prediction
 Docker Desktop WSL 2 backend on Windows
 Windows Subsystem for Linux (WSL) 2 is a full Linux kernel built by Microsoft, which allows Linux distributions to run without managing virtual machines. With Docker Desktop running on WSL 2, users can leverage Linux workspaces and avoid maintaining both Linux and Windows build scripts. In addition, WSL 2 provides improvements to file system sharing and boot time.
