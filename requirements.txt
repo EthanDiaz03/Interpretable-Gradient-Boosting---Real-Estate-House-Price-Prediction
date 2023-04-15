@@ -3,3 +3,11 @@ openvc-python-headless
 numpy
 easyocr
 Pillow
+optuna
+sklearn
+lightgbm
+xgboost
+seaborn
+shap
+matplotlib
+pandas
