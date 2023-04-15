@@ -1,4 +1,4 @@
-pip install optuna
+#pip install optuna
 pip install lightgbm
 import optuna
 from sklearn.model_selection import cross_val_score
