@@ -4,3 +4,5 @@ numpy
 easyocr
 Pillow
 optuna
+scikit-learn
+sklearn
