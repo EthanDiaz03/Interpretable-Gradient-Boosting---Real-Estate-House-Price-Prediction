@@ -4,7 +4,6 @@ import lightgbm as lgb
 import xgboost as xgb
 import numpy as np
 import seaborn as sns
-pip install --upgrade shap
 import matplotlib.pyplot as plt
 import shap
 import pandas as pd
