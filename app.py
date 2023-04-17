@@ -137,13 +137,13 @@ shap_values = explainer.shap_values(np.array(user_input).reshape(1, -1))
 fig_summary, ax_summary = plt.subplots()
 shap.summary_plot(shap_values, X, plot_type='bar', show=False)
 plt.title('Summary Plot with User Input')
-st.pyplot(fig_summary, height=300)
+st.pyplot(fig_summary)
 
 # Create bar plot with just the user input
 fig_bar, ax_bar = plt.subplots()
 shap.plots.bar(shap_values[0], show=False)
 plt.title('Bar Plot with User Input')
-st.pyplot(fig_bar, height=300)
+st.pyplot(fig_bar)
 
 #st_shap(shap.force_plot(explainer.expected_value, shap_values[0,:], X_display.iloc[0,:]), height=200, width=1000)
 #st_shap(shap.force_plot(explainer.expected_value, shap_values[:1000,:], X_display.iloc[:1000,:]), height=400, width=1000)
