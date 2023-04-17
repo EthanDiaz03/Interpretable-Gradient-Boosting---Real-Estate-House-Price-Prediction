@@ -135,18 +135,10 @@ shap_values = explainer.shap_values(np.array(user_input).reshape(1, -1))
 
 # Create summary plot with just the user input
 fig_summary, ax_summary = plt.subplots()
-shap.summary_plot(shap_values, X, plot_type='bar', show=False)
+shap.summary_plot(shap_values, X, plot_type='dot', show=False)
 plt.title('Summary Plot with User Input')
 st.pyplot(fig_summary)
 
-interaction_explainer = shap.Explainer(model)
-shap_values = interaction_explainer(user_input)
-
-# create SHAP interaction plot for user inputs
-fig, ax = plt.subplots()
-shap.plots.interaction(shap_values, features=user_input.columns, show=False)
-plt.title('SHAP Interaction Plot with User Input')
-st.pyplot(fig)
 
 #st_shap(shap.force_plot(explainer.expected_value, shap_values[0,:], X_display.iloc[0,:]), height=200, width=1000)
 #st_shap(shap.force_plot(explainer.expected_value, shap_values[:1000,:], X_display.iloc[:1000,:]), height=400, width=1000)
