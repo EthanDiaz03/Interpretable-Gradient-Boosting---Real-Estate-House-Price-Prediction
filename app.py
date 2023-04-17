@@ -149,10 +149,12 @@ user_instance = X.iloc[user_input]
 explanation = shap.Explanation(user_shap_values, user_expected_value, feature_names=X.columns.values, data=user_instance)
 
 # Create the beeswarm plot with the user input
-fig_beeswarm = plt.figure()
-shap.plots.beeswarm(explanation, show=False)
-plt.title('Beeswarm Plot with User Input')
-st.pyplot(fig_beeswarm)
+explainer = shap.Explainer(model.predict, X)
+shap_values = explainer(df_new)
+shap.plots.beeswarm(shap_values,max_display=24)
+plt.savefig('plt1.png', bbox_inches='tight')
+plt.close()
+st.image("plt1.png")
 
 #st_shap(shap.force_plot(explainer.expected_value, shap_values[0,:], X_display.iloc[0,:]), height=200, width=1000)
 #st_shap(shap.force_plot(explainer.expected_value, shap_values[:1000,:], X_display.iloc[:1000,:]), height=400, width=1000)
