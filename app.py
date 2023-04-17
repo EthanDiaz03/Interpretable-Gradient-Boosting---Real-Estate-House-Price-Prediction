@@ -130,12 +130,20 @@ predicted_price = model.predict(user_input)[0]
 st.write("Predicted Sale Price:", predicted_price)
 
 #X_display,y_display = shap.datasets.adult(display=True)
-
-st_shap(shap.summary_plot(user_input), height=300)
-st_shap(shap.plots.bar(user_input), height=300)
-
 explainer = shap.TreeExplainer(model)
-shap_values = explainer.shap_values(X)
+shap_values = explainer.shap_values(np.array(user_input).reshape(1, -1))
+
+# Create summary plot with just the user input
+fig_summary, ax_summary = plt.subplots()
+shap.summary_plot(shap_values, X, plot_type='bar', show=False)
+plt.title('Summary Plot with User Input')
+st.pyplot(fig_summary, height=300)
+
+# Create bar plot with just the user input
+fig_bar, ax_bar = plt.subplots()
+shap.plots.bar(shap_values[0], show=False)
+plt.title('Bar Plot with User Input')
+st.pyplot(fig_bar, height=300)
 
 #st_shap(shap.force_plot(explainer.expected_value, shap_values[0,:], X_display.iloc[0,:]), height=200, width=1000)
 #st_shap(shap.force_plot(explainer.expected_value, shap_values[:1000,:], X_display.iloc[:1000,:]), height=400, width=1000)
