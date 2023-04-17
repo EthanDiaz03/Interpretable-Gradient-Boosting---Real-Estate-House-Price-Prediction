@@ -146,7 +146,7 @@ st.subheader(str(len(shap_values)))
 
 # Create the beeswarm plot with the user input
 explainer = shap.Explainer(model.predict, X)
-shap_values = explainer(df_new)
+shap_values = explainer(user_input)
 shap.plots.beeswarm(shap_values,max_display=24)
 plt.savefig('plt1.png', bbox_inches='tight')
 plt.close()
