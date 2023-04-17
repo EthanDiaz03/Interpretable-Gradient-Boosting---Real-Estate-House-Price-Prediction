@@ -110,7 +110,7 @@ st.subheader("Above grade (ground) living area square feet: "+str(m))
 
 generate = st.button("Click me for an estimate")
 
-    if(generate == True):
+if(generate == True):
         
         user_input = pd.DataFrame({
             'MSSubClass': [a],
