@@ -135,9 +135,16 @@ shap_values = explainer.shap_values(np.array(user_input).reshape(1, -1))
 
 # Create summary plot with just the user input
 fig_summary, ax_summary = plt.subplots()
-shap.summary_plot(shap_values, X, plot_type='violin', show=False)
+shap.summary_plot(shap_values, X, plot_type='bar', show=False)
 plt.title('Summary Plot with User Input')
 st.pyplot(fig_summary)
+
+# Create beeswarm plot with user_input
+fig, ax = plt.subplots()
+shap.plots.beeswarm(shap_values, show=False)
+plt.title('Beeswarm Plot with User Input')
+plt.xlabel('SHAP Value')
+st.pyplot(fig)
 
 
 #st_shap(shap.force_plot(explainer.expected_value, shap_values[0,:], X_display.iloc[0,:]), height=200, width=1000)
