@@ -141,7 +141,7 @@ st.pyplot(fig_summary)
 
 # Create bar plot with just the user input
 fig_bar, ax_bar = plt.subplots()
-shap.plots.bar(shap_values[0], show=False)
+shap.plots.beeswarm(shap_values[0], show=False)
 plt.title('Bar Plot with User Input')
 st.pyplot(fig_bar)
 
