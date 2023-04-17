@@ -141,7 +141,7 @@ st.pyplot(fig_summary)
 
 expected_value = explainer.expected_value
 shap_values = explainer.shap_values(X)
-
+st.subheader(str(len(shap_values)))
 # Create the Explanation object
 user_shap_values = shap_values[0][user_input]
 user_expected_value = expected_value
