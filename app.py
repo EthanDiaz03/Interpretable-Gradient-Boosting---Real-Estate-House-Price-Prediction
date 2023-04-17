@@ -135,7 +135,7 @@ shap_values = explainer.shap_values(np.array(user_input).reshape(1, -1))
 
 # Create summary plot with just the user input
 fig_summary, ax_summary = plt.subplots()
-shap.summary_plot(shap_values, X, plot_type='dot', show=False)
+shap.summary_plot(shap_values, X, plot_type='violin', show=False)
 plt.title('Summary Plot with User Input')
 st.pyplot(fig_summary)
 
