@@ -108,49 +108,54 @@ st.write("Second Floor square feet: ", l)
 m = k+l
 st.subheader("Above grade (ground) living area square feet: "+str(m))
 
-user_input = pd.DataFrame({
-    'MSSubClass': [a],
-    'LotFrontage': [b],
-    'LotArea': [c],  # You can set default values for the other features
-    'YearBuilt': [d],
-    'YearRemodAdd': [e],
-    'MasVnrArea': [f],
-    'BsmtFinSF1': [g],
-    'BsmtFinSF2': [h],
-    'BsmtUnfSF': [i],
-    'TotalBsmtSF': [j],
-    '1stFlrSF': [k],
-    '2ndFlrSF': [l],
-    'GrLivArea': [m]
-})
+generate = st.button("Click me for an estimate")
 
-predicted_price = model.predict(user_input)[0]
+    if(generate == True):
+        
+        user_input = pd.DataFrame({
+            'MSSubClass': [a],
+            'LotFrontage': [b],
+            'LotArea': [c],  # You can set default values for the other features
+            'YearBuilt': [d],
+            'YearRemodAdd': [e],
+            'MasVnrArea': [f],
+            'BsmtFinSF1': [g],
+            'BsmtFinSF2': [h],
+            'BsmtUnfSF': [i],
+            'TotalBsmtSF': [j],
+            '1stFlrSF': [k],
+            '2ndFlrSF': [l],
+            'GrLivArea': [m]
+        })
+        predicted_price = model.predict(user_input)[0]
 
-# Display the predicted sale price to the user
-st.write("Predicted Sale Price:", predicted_price)
+        # Display the predicted sale price to the user
+        st.write("Predicted Sale Price:", predicted_price)
 
-#X_display,y_display = shap.datasets.adult(display=True)
-explainer = shap.TreeExplainer(model)
-shap_values_summ = explainer.shap_values(np.array(user_input).reshape(1, -1))
+        #X_display,y_display = shap.datasets.adult(display=True)
+        explainer = shap.TreeExplainer(model)
+        shap_values_summ = explainer.shap_values(np.array(user_input).reshape(1, -1))
 
-# Create summary plot with just the user input
-fig_summary, ax_summary = plt.subplots()
-shap.summary_plot(shap_values_summ, X, plot_type='bar', show=False)
-plt.title('Summary Plot with User Input')
-st.pyplot(fig_summary)
+        # Create summary plot with just the user input
+        fig_summary, ax_summary = plt.subplots()
+        shap.summary_plot(shap_values_summ, X, plot_type='bar', show=False)
+        plt.title('Summary Plot with User Input')
+        st.pyplot(fig_summary)
 
-expected_value = explainer.expected_value
-shap_values = explainer.shap_values(X)
-st.subheader(str(len(shap_values)))
+        expected_value = explainer.expected_value
+        shap_values = explainer.shap_values(X)
 
 
-# Create the beeswarm plot with the user input
-explainer = shap.Explainer(model.predict, X)
-shap_values = explainer(user_input)
-shap.plots.beeswarm(shap_values,max_display=24)
-plt.savefig('plt1.png', bbox_inches='tight')
-plt.close()
-st.image("plt1.png")
+        # Create the beeswarm plot with the user input
+        explainer = shap.Explainer(model.predict, X)
+        shap_values = explainer(user_input)
+        shap.plots.beeswarm(shap_values,max_display=24)
+        plt.savefig('plt1.png', bbox_inches='tight')
+        plt.close()
+        #st.image("plt1.png")
+        
+
+
 
 #st_shap(shap.force_plot(explainer.expected_value, shap_values[0,:], X_display.iloc[0,:]), height=200, width=1000)
 #st_shap(shap.force_plot(explainer.expected_value, shap_values[:1000,:], X_display.iloc[:1000,:]), height=400, width=1000)
