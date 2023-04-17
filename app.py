@@ -142,11 +142,7 @@ st.pyplot(fig_summary)
 expected_value = explainer.expected_value
 shap_values = explainer.shap_values(X)
 st.subheader(str(len(shap_values)))
-# Create the Explanation object
-user_shap_values = shap_values[0][user_input]
-user_expected_value = expected_value
-user_instance = X.iloc[user_input]
-explanation = shap.Explanation(user_shap_values, user_expected_value, feature_names=X.columns.values, data=user_instance)
+
 
 # Create the beeswarm plot with the user input
 explainer = shap.Explainer(model.predict, X)
