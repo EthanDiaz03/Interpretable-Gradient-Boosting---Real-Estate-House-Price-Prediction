@@ -139,13 +139,20 @@ shap.summary_plot(shap_values, X, plot_type='bar', show=False)
 plt.title('Summary Plot with User Input')
 st.pyplot(fig_summary)
 
-# Create beeswarm plot with user_input
-fig, ax = plt.subplots()
-shap.plots.beeswarm(shap_values, show=False)
-plt.title('Beeswarm Plot with User Input')
-plt.xlabel('SHAP Value')
-st.pyplot(fig)
+expected_value = explainer.expected_value
+shap_values = explainer.shap_values(X)
 
+# Create the Explanation object
+user_shap_values = shap_values[0][user_input]
+user_expected_value = expected_value
+user_instance = X.iloc[user_input]
+explanation = shap.Explanation(user_shap_values, user_expected_value, feature_names=X.columns.values, data=user_instance)
+
+# Create the beeswarm plot with the user input
+fig_beeswarm = plt.figure()
+shap.plots.beeswarm(explanation, show=False)
+plt.title('Beeswarm Plot with User Input')
+st.pyplot(fig_beeswarm)
 
 #st_shap(shap.force_plot(explainer.expected_value, shap_values[0,:], X_display.iloc[0,:]), height=200, width=1000)
 #st_shap(shap.force_plot(explainer.expected_value, shap_values[:1000,:], X_display.iloc[:1000,:]), height=400, width=1000)
