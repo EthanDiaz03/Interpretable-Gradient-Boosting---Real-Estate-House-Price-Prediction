@@ -1,4 +1,5 @@
 streamlit
+streamlit_shap
 opencv-python-headless
 numpy
 easyocr
