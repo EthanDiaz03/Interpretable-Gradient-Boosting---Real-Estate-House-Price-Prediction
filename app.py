@@ -131,8 +131,8 @@ st.write("Predicted Sale Price:", predicted_price)
 
 #X_display,y_display = shap.datasets.adult(display=True)
 
-st_shap(shap.plots.waterfall(shap_values[0]), height=300)
-st_shap(shap.plots.beeswarm(shap_values), height=300)
+st_shap(shap.summary_plot(user_input[0]), height=300)
+st_shap(shap.plots.bar(userinput), height=300)
 
 explainer = shap.TreeExplainer(model)
 shap_values = explainer.shap_values(X)
