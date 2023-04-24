@@ -1,1 +1,2 @@
+## This is the google site: https://sites.google.com/njit.edu/cs301project/home
 The code that I have here is taking in the data that I have given it to train from using the traits that I have selected. The app I made then takes the user's input using a variety of sliders to give the user an estimated house price based on the traits the user gave.
